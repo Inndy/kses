@@ -19,6 +19,7 @@ normally looks like this:
 	                              'title' => 1),
 	                 'p' => array('align' => 1),
 	                 'br' => array());
+	```
 
 This sets what elements and attributes are allowed.
 
@@ -35,6 +36,7 @@ do it like this:
 	                 'font' => array('size' =>
 	                                array('maxval' => 20)),
 	                 'br' => array());
+	```
 
 This means that kses should perform the maxlen check with the value 100 on the
 `<a href=>` value, as well as the maxval check with the value 20 on the `<font

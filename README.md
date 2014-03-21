@@ -100,6 +100,7 @@ like this:
 	# Do something with $val.
 	
 	?>
+	```
 
 
 This definition of `$allowed` means that only the elements `b`, `i`, `a`, `p` 
