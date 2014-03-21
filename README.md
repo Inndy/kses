@@ -1,7 +1,11 @@
 kses 0.2.2 README
 =================
 
-## kses strips evil scripts!
+### kses strips evil scripts!
+
+
+## About This
+
 
 > This project is forked from [HERE](http://sourceforge.net/projects/kses/).
 > 
@@ -11,7 +15,11 @@ kses 0.2.2 README
 > 
 > But... You can send pull request! :)
 
-## INTRODUCTION
+
+## [Document](./DOCUMENT.md)
+
+
+## Introtduction
 
 
 Welcome to kses - an HTML/XHTML filter written in PHP. It removes all unwanted
@@ -25,7 +33,7 @@ should look into what that means, before using kses in your programs. You can
 find the full text of the license in the file COPYING.
 
 
-## FEATURES
+## Features
 
 
 Some of kses' current features are:
@@ -64,7 +72,7 @@ It also normalizes HTML entities as a nice side effect.
   and PHP 5) of kses.
 
 
-## USE IT
+## How to use it
 
 
 It's very easy to use kses in your own PHP web application! Basic usage looks
@@ -118,7 +126,7 @@ kses. The object-oriented versions of kses are also worth checking out, and
 they're included in the `oop/` directory.
 
 
-## UPGRADING TO 0.2.2
+## Upgrading TO 0.2.2
 
 
 kses 0.2.2 is backwards compatible with all previous releases, so upgrading
@@ -126,8 +134,10 @@ should just be a matter of using a new version of kses.php instead of an old
 one.
 
 
-## NEW VERSIONS, MAILING LISTS AND BUG REPORTS
+## New versions, Mailing list and bug reports
 
+
+> *It may not work anymore.*
 
 If you want to download new versions, subscribe to the kses-general mailing
 list or even take part in the development of kses, we refer you to its
@@ -147,7 +157,7 @@ attributes style and onLoad, it will accept them, even if that's a really bad
 idea, securitywise.)
 
 
-## OTHER HTML FILTERS
+## Other HTML filters
 
 
 Here are the other stand-alone, open source HTML filters that we currently know
@@ -175,13 +185,13 @@ Please write to the kses-general mailing list if you know of any other
 stand-alone, open-source filters.
 
 
-## DEDICATION
+## Dedication
 
 
 kses 0.2.2 is dedicated to Audrey Tautou and Jean-Pierre Jeunet.
 
 
-## MISC
+## Misc
 
 
 The kses code is based on an HTML filter that Ulf wrote on his own back in 2002
