@@ -79,28 +79,28 @@ It's very easy to use kses in your own PHP web application! Basic usage looks
 like this:
 
 
-	```php
-	<?php
-	
-	include 'kses.php';
-	
-	$allowed = array('b' => array(),
-	                 'i' => array(),
-	                 'a' => array('href' => 1, 'title' => 1),
-	                 'p' => array('align' => 1),
-	                 'br' => array());
-	
-	$val = $_POST['val'];
-	if (get_magic_quotes_gpc())
-	  $val = stripslashes($val);
-	# You must strip slashes from magic quotes, or kses will get confused.
-	
-	$val = kses($val, $allowed); # The filtering takes place here.
-	
-	# Do something with $val.
-	
-	?>
-	```
+```php
+<?php
+
+include 'kses.php';
+
+$allowed = array('b' => array(),
+                 'i' => array(),
+                 'a' => array('href' => 1, 'title' => 1),
+                 'p' => array('align' => 1),
+                 'br' => array());
+
+$val = $_POST['val'];
+if (get_magic_quotes_gpc())
+  $val = stripslashes($val);
+# You must strip slashes from magic quotes, or kses will get confused.
+
+$val = kses($val, $allowed); # The filtering takes place here.
+
+# Do something with $val.
+
+?>
+```
 
 
 This definition of `$allowed` means that only the elements `b`, `i`, `a`, `p` 

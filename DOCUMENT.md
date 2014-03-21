@@ -12,31 +12,31 @@ calls it from its main function kses(), so if you insert some code in
 As you've probably already read in the README file, an `$allowed_html` array
 normally looks like this:
 
-	```php
-	$allowed = array('b' => array(),
-	                 'i' => array(),
-	                 'a' => array('href' => 1,
-	                              'title' => 1),
-	                 'p' => array('align' => 1),
-	                 'br' => array());
-	```
+```php
+$allowed = array('b' => array(),
+                 'i' => array(),
+                 'a' => array('href' => 1,
+                              'title' => 1),
+                 'p' => array('align' => 1),
+                 'br' => array());
+```
 
 This sets what elements and attributes are allowed.
 
 From kses 0.2.0, you can also perform some checks on the attribute values. You
 do it like this:
 
-	```php
-	$allowed = array('b' => array(),
-	                 'i' => array(),
-	                 'a' => array('href' =>
-	                                array('maxlen' => 100),
-	                              'title' => 1),
-	                 'p' => array('align' => 1),
-	                 'font' => array('size' =>
-	                                array('maxval' => 20)),
-	                 'br' => array());
-	```
+```php
+$allowed = array('b' => array(),
+                 'i' => array(),
+                 'a' => array('href' =>
+                                array('maxlen' => 100),
+                              'title' => 1),
+                 'p' => array('align' => 1),
+                 'font' => array('size' =>
+                                array('maxval' => 20)),
+                 'br' => array());
+```
 
 This means that kses should perform the maxlen check with the value 100 on the
 `<a href=>` value, as well as the maxval check with the value 20 on the `<font
