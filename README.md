@@ -3,7 +3,7 @@ kses 0.2.2 README
 
 ## kses strips evil scripts!
 
-> This project is forked from [HERE](http://sourceforge.net/projects/kses/)
+> This project is forked from [HERE](http://sourceforge.net/projects/kses/).
 > 
 > Well... I kept all the things originally except that convert documents into markdown format.
 >
@@ -112,7 +112,7 @@ slashes coming from magic quotes. If the rest of your code requires these
 slashes to be present, you can always add them again after calling kses with
 a simple `addslashes()` call.
 
-You should take a look at the documentation in the `docs/` directory and the
+You should take a look at the documentation in the `DOCUMENT.md` file and the
 examples in the `examples/` directory, to get more information on how to use
 kses. The object-oriented versions of kses are also worth checking out, and
 they're included in the `oop/` directory.

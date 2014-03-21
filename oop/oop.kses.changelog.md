@@ -100,7 +100,7 @@ Procedural
 	  as both versions will be maintained with each release.
 
 	- kses now has some new attribute value checks: minlen, minval and
-	  valueless.  See `docs/attribute-value-checks.md` for an explanation.
+	  valueless.  See `Attribute Value Checks` in `DOCUMENT.md` for an explanation.
 
 	- For some reason, the Opera developers decided to make chr(173) a
 	  whitespace character in URL protocols, both when it occurs raw and in an
