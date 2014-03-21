@@ -79,6 +79,7 @@ It's very easy to use kses in your own PHP web application! Basic usage looks
 like this:
 
 
+	```php
 	<?php
 	
 	include 'kses.php';

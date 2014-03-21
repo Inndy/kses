@@ -12,6 +12,7 @@ calls it from its main function kses(), so if you insert some code in
 As you've probably already read in the README file, an `$allowed_html` array
 normally looks like this:
 
+	```php
 	$allowed = array('b' => array(),
 	                 'i' => array(),
 	                 'a' => array('href' => 1,
@@ -24,6 +25,7 @@ This sets what elements and attributes are allowed.
 From kses 0.2.0, you can also perform some checks on the attribute values. You
 do it like this:
 
+	```php
 	$allowed = array('b' => array(),
 	                 'i' => array(),
 	                 'a' => array('href' =>
