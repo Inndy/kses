@@ -29,7 +29,7 @@
 #
 # [kses strips evil scripts!]
 
-define('KSES_ENABLE_STYLE', true); // allow "style" attribute
+define('KSES_ENABLE_STYLE', false); // allow "style" attribute
 
 $default_allowed_tags = array( // list from WordPress
 	'address' => array(),
@@ -350,7 +350,7 @@ $default_allowed_tags = array( // list from WordPress
 	'var' => array(),
 );
 
-if (KSES_ENABLE_STYLE == true)
+if (KSES_ENABLE_STYLE === true)
 	foreach ($default_allowed_tags as $k => $v)
 		$default_allowed_tags[$k]['style'] = true;
 
@@ -711,7 +711,7 @@ function kses_bad_protocol($string, $allowed_protocols, $attrname = "")
 # fooled by a string like "javascript:javascript:alert(57)".
 ###############################################################################
 {
-	if ($attrname == "style" && KSES_ENABLE_STYLE == true)
+	if ($attrname == "style" && KSES_ENABLE_STYLE === true)
 		return $string;
   $string = kses_no_null($string);
   $string = preg_replace('/\xad+/', '', $string); # deals with Opera "feature"
