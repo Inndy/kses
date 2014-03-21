@@ -29,8 +29,333 @@
 #
 # [kses strips evil scripts!]
 
+define('KSES_ENABLE_STYLE', true); // allow "style" attribute
 
-function kses($string, $allowed_html, $allowed_protocols =
+$default_allowed_tags = array( // list from WordPress
+	'address' => array(),
+	'a' => array(
+		'href' => true,
+		'rel' => true,
+		'rev' => true,
+		'name' => true,
+		'target' => true,
+	),
+	'abbr' => array(),
+	'acronym' => array(),
+	'area' => array(
+		'alt' => true,
+		'coords' => true,
+		'href' => true,
+		'nohref' => true,
+		'shape' => true,
+		'target' => true,
+	),
+	'article' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'aside' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'b' => array(),
+	'big' => array(),
+	'blockquote' => array(
+		'cite' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'br' => array(),
+	'button' => array(
+		'disabled' => true,
+		'name' => true,
+		'type' => true,
+		'value' => true,
+	),
+	'caption' => array(
+		'align' => true,
+	),
+	'cite' => array(
+		'dir' => true,
+		'lang' => true,
+	),
+	'code' => array(),
+	'col' => array(
+		'align' => true,
+		'char' => true,
+		'charoff' => true,
+		'span' => true,
+		'dir' => true,
+		'valign' => true,
+		'width' => true,
+	),
+	'del' => array(
+		'datetime' => true,
+	),
+	'dd' => array(),
+	'dfn' => array(),
+	'details' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'open' => true,
+		'xml:lang' => true,
+	),
+	'div' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'dl' => array(),
+	'dt' => array(),
+	'em' => array(),
+	'fieldset' => array(),
+	'figure' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'figcaption' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'font' => array(
+		'color' => true,
+		'face' => true,
+		'size' => true,
+	),
+	'footer' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'form' => array(
+		'action' => true,
+		'accept' => true,
+		'accept-charset' => true,
+		'enctype' => true,
+		'method' => true,
+		'name' => true,
+		'target' => true,
+	),
+	'h1' => array(
+		'align' => true,
+	),
+	'h2' => array(
+		'align' => true,
+	),
+	'h3' => array(
+		'align' => true,
+	),
+	'h4' => array(
+		'align' => true,
+	),
+	'h5' => array(
+		'align' => true,
+	),
+	'h6' => array(
+		'align' => true,
+	),
+	'header' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'hgroup' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'hr' => array(
+		'align' => true,
+		'noshade' => true,
+		'size' => true,
+		'width' => true,
+	),
+	'i' => array(),
+	'img' => array(
+		'alt' => true,
+		'align' => true,
+		'border' => true,
+		'height' => true,
+		'hspace' => true,
+		'longdesc' => true,
+		'vspace' => true,
+		'src' => true,
+		'usemap' => true,
+		'width' => true,
+	),
+	'ins' => array(
+		'datetime' => true,
+		'cite' => true,
+	),
+	'kbd' => array(),
+	'label' => array(
+		'for' => true,
+	),
+	'legend' => array(
+		'align' => true,
+	),
+	'li' => array(
+		'align' => true,
+		'value' => true,
+	),
+	'map' => array(
+		'name' => true,
+	),
+	'mark' => array(),
+	'menu' => array(
+		'type' => true,
+	),
+	'nav' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'p' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'pre' => array(
+		'width' => true,
+	),
+	'q' => array(
+		'cite' => true,
+	),
+	's' => array(),
+	'samp' => array(),
+	'span' => array(
+		'dir' => true,
+		'align' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'section' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'small' => array(),
+	'strike' => array(),
+	'strong' => array(),
+	'sub' => array(),
+	'summary' => array(
+		'align' => true,
+		'dir' => true,
+		'lang' => true,
+		'xml:lang' => true,
+	),
+	'sup' => array(),
+	'table' => array(
+		'align' => true,
+		'bgcolor' => true,
+		'border' => true,
+		'cellpadding' => true,
+		'cellspacing' => true,
+		'dir' => true,
+		'rules' => true,
+		'summary' => true,
+		'width' => true,
+	),
+	'tbody' => array(
+		'align' => true,
+		'char' => true,
+		'charoff' => true,
+		'valign' => true,
+	),
+	'td' => array(
+		'abbr' => true,
+		'align' => true,
+		'axis' => true,
+		'bgcolor' => true,
+		'char' => true,
+		'charoff' => true,
+		'colspan' => true,
+		'dir' => true,
+		'headers' => true,
+		'height' => true,
+		'nowrap' => true,
+		'rowspan' => true,
+		'scope' => true,
+		'valign' => true,
+		'width' => true,
+	),
+	'textarea' => array(
+		'cols' => true,
+		'rows' => true,
+		'disabled' => true,
+		'name' => true,
+		'readonly' => true,
+	),
+	'tfoot' => array(
+		'align' => true,
+		'char' => true,
+		'charoff' => true,
+		'valign' => true,
+	),
+	'th' => array(
+		'abbr' => true,
+		'align' => true,
+		'axis' => true,
+		'bgcolor' => true,
+		'char' => true,
+		'charoff' => true,
+		'colspan' => true,
+		'headers' => true,
+		'height' => true,
+		'nowrap' => true,
+		'rowspan' => true,
+		'scope' => true,
+		'valign' => true,
+		'width' => true,
+	),
+	'thead' => array(
+		'align' => true,
+		'char' => true,
+		'charoff' => true,
+		'valign' => true,
+	),
+	'title' => array(),
+	'tr' => array(
+		'align' => true,
+		'bgcolor' => true,
+		'char' => true,
+		'charoff' => true,
+		'valign' => true,
+	),
+	'tt' => array(),
+	'u' => array(),
+	'ul' => array(
+		'type' => true,
+	),
+	'ol' => array(
+		'start' => true,
+		'type' => true,
+	),
+	'var' => array(),
+);
+
+if (KSES_ENABLE_STYLE == true)
+	foreach ($default_allowed_tags as $k => $v)
+		$default_allowed_tags[$k]['style'] = true;
+
+
+function kses($string, $allowed_html = null, $allowed_protocols =
                array('http', 'https', 'ftp', 'news', 'nntp', 'telnet',
                      'gopher', 'mailto'))
 ###############################################################################
@@ -40,6 +365,10 @@ function kses($string, $allowed_html, $allowed_protocols =
 # call this function.
 ###############################################################################
 {
+	if ($allowed_html == null) {
+		global $default_allowed_tags;
+		$allowed_html = $default_allowed_tags;
+	}
   $string = kses_no_null($string);
   $string = kses_js_entities($string);
   $string = kses_normalize_entities($string);
@@ -243,7 +572,7 @@ function kses_hair($attr, $allowed_protocols)
         if (preg_match('/^"([^"]*)"(\s+|$)/', $attr, $match))
          # "value"
         {
-          $thisval = kses_bad_protocol($match[1], $allowed_protocols);
+          $thisval = kses_bad_protocol($match[1], $allowed_protocols, $attrname);
 
           $attrarr[] = array
                         ('name'  => $attrname,
@@ -258,7 +587,7 @@ function kses_hair($attr, $allowed_protocols)
         if (preg_match("/^'([^']*)'(\s+|$)/", $attr, $match))
          # 'value'
         {
-          $thisval = kses_bad_protocol($match[1], $allowed_protocols);
+          $thisval = kses_bad_protocol($match[1], $allowed_protocols, $attrname);
 
           $attrarr[] = array
                         ('name'  => $attrname,
@@ -273,7 +602,7 @@ function kses_hair($attr, $allowed_protocols)
         if (preg_match("%^([^\s\"']+)(\s+|$)%", $attr, $match))
          # value
         {
-          $thisval = kses_bad_protocol($match[1], $allowed_protocols);
+          $thisval = kses_bad_protocol($match[1], $allowed_protocols, $attrname);
 
           $attrarr[] = array
                         ('name'  => $attrname,
@@ -374,7 +703,7 @@ function kses_check_attr_val($value, $vless, $checkname, $checkvalue)
 } # function kses_check_attr_val
 
 
-function kses_bad_protocol($string, $allowed_protocols)
+function kses_bad_protocol($string, $allowed_protocols, $attrname = "")
 ###############################################################################
 # This function removes all non-allowed protocols from the beginning of
 # $string. It ignores whitespace and the case of the letters, and it does
@@ -382,6 +711,8 @@ function kses_bad_protocol($string, $allowed_protocols)
 # fooled by a string like "javascript:javascript:alert(57)".
 ###############################################################################
 {
+	if ($attrname == "style" && KSES_ENABLE_STYLE == true)
+		return $string;
   $string = kses_no_null($string);
   $string = preg_replace('/\xad+/', '', $string); # deals with Opera "feature"
   $string2 = $string.'a';
